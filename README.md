@@ -23,8 +23,11 @@ RABBITMQ_PORT = 5672
 RABBITMQ_VIRTUAL_HOST = '/'
 
 credentials = PlainCredentials(RABBITMQ_USERNAME, RABBITMQ_PASSWORD)
-conf = RabbitMQConfiguration(credentials, queue='PythonServiceQueue', host=RABBITMQ_HOST, port=RABBITMQ_PORT,
-                                 virtual_host=RABBITMQ_VIRTUAL_HOST)
+conf = RabbitMQConfiguration(credentials, 
+                             queue='PythonServiceQueue', 
+                             host=RABBITMQ_HOST, 
+                             port=RABBITMQ_PORT,
+                             virtual_host=RABBITMQ_VIRTUAL_HOST)
 ```
 
 ### Receiver

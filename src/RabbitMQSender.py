@@ -45,14 +45,13 @@ class RabbitMQSender(object):
         print("Message Published")
         print(message)
 
-    @staticmethod
-    def create_masstransit_response(message, request_body):
+    def create_masstransit_response(self, message, request_body):
         response = {
             "messageId": request_body['messageId'],
             "conversationId": request_body['conversationId'],
             "sourceAddress": request_body['sourceAddress'],
             "destinationAddress": request_body['destinationAddress'],
-            "messageType": ['urn:message:ItemService.Application.Messages:ItemPositionMessage'],
+            "messageType": ['urn:message:' + self._exchange],
             "message": message
         }
         return dumps(response)

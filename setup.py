@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
      name='masstransitpython',
-     version='0.0.1',
+     version='0.0.3',
      py_modules=['RabbitMQReceiver', 'RabbitMQSender', 'RabbitMQConfiguration'],
      package_dir={'': 'src'},
      author="Michał Wieczorek",
