@@ -5,11 +5,11 @@ from masstransitpython import RabbitMQSender
 from threading import Thread
 from json import loads, JSONEncoder
 
-RABBITMQ_USERNAME = 'rabbitmq'
-RABBITMQ_PASSWORD = 'rabbitmq'
+RABBITMQ_USERNAME = 'guest'
+RABBITMQ_PASSWORD = 'guest'
 RABBITMQ_HOST = 'localhost'
-RABBITMQ_PORT = 5900
-RABBITMQ_VIRTUAL_HOST = '/epicservices'
+RABBITMQ_PORT = 5672
+RABBITMQ_VIRTUAL_HOST = '/'
 
 
 class SampleMessage:
@@ -34,7 +34,7 @@ def handler(ch, method, properties, body):
 def send_message(body):
     # configure publisher
     sender_conf = RabbitMQConfiguration(credentials,
-                                        queue='MassTransitServiceQueue',
+                                        queue='SampleMessage',
                                         host=RABBITMQ_HOST,
                                         port=RABBITMQ_PORT,
                                         virtual_host=RABBITMQ_VIRTUAL_HOST)
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     # define credentials and configuration for receiver
     credentials = PlainCredentials(RABBITMQ_USERNAME, RABBITMQ_PASSWORD)
     conf = RabbitMQConfiguration(credentials,
-                                 queue='PythonServiceQueue',
+                                 queue='SampleMessage',
                                  host=RABBITMQ_HOST,
                                  port=RABBITMQ_PORT,
                                  virtual_host=RABBITMQ_VIRTUAL_HOST)

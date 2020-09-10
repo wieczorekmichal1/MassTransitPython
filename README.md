@@ -4,7 +4,7 @@ Python library to exchange messages between MassTransit RabbitMQ Client and Pyth
 ## Installation
 Run the following to install:
 ```python
-pip install masstransitpython
+pip install masstransitpython-byQ96
 ```
 
 ## Usage
@@ -14,7 +14,7 @@ Simple receiver/sender model was implemented to show basic package usage.
 Default client configuration can be implemented as follows:
 ```python
 from pika import PlainCredentials
-from RabbitMQConfiguration import RabbitMQConfiguration
+from masstransitpython import RabbitMQConfiguration
 
 RABBITMQ_USERNAME = 'guest'
 RABBITMQ_PASSWORD = 'guest'
