@@ -1,5 +1,5 @@
 # Description
-Python library to exchange messages between MassTransit RabbitMQ Client and Python application.
+Python library to exchange messages between MassTransit RabbitMQ Client and Python application. Implemented with pika RabbitMQ client.
 
 ## Installation
 Run the following to install:
