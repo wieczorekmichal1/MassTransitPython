@@ -1,5 +1,6 @@
 from pika import BlockingConnection
 from pika import ConnectionParameters
+import logging
 
 
 class MetaClass(type):
@@ -31,7 +32,9 @@ class RabbitMQReceiver(metaclass=MetaClass):
         self._routing_key = routing_key
         self._exchange = exchange
         self._channel.queue_declare(queue=self._queue)
-        self._channel.exchange_declare(exchange=exchange)
+        self._channel.exchange_declare(exchange=exchange,
+                                       exchange_type='fanout',
+                                       durable=True)
         self._channel.queue_bind(queue=self._queue,
                                  exchange=self._exchange,
                                  routing_key=self._routing_key)
@@ -48,7 +51,7 @@ class RabbitMQReceiver(metaclass=MetaClass):
 
     def start_consuming(self):
         """ Start consumer with earlier defined callback """
-        print("Receive started")
+        logging.info(f"Listening to {self._queue} queue\n")
         self._channel.basic_consume(queue=self._queue,
                                     on_message_callback=self._on_message_callback,
                                     auto_ack=True)

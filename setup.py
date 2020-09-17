@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
      name='masstransitpython-byQ96',
-     version='0.0.3',
+     version='0.0.5',
      author="Michał Wieczorek",
      author_email="michal126@hotmail.com",
      description="Python RabbitMQ client for MassTransit Communication",

@@ -1,6 +1,7 @@
 from pika import BlockingConnection
 from pika import ConnectionParameters
 from json import dumps
+import logging
 
 
 class RabbitMQSender(object):
@@ -42,8 +43,7 @@ class RabbitMQSender(object):
         self._channel.basic_publish(exchange=self._exchange,
                                     routing_key=self._routing_key,
                                     body=message)
-        print("Message Published")
-        print(message)
+        logging.info(f"Message published to {self._queue} queue\n")
 
     def create_masstransit_response(self, message, request_body):
         response = {
