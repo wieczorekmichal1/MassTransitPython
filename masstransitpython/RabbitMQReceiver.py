@@ -31,7 +31,7 @@ class RabbitMQReceiver(metaclass=MetaClass):
         self._queue = self._configuration.queue
         self._routing_key = routing_key
         self._exchange = exchange
-        self._channel.queue_declare(queue=self._queue)
+        self._channel.queue_declare(queue=self._queue, durable=self._configuration.durable)
         self._channel.exchange_declare(exchange=exchange,
                                        exchange_type='fanout',
                                        durable=True)

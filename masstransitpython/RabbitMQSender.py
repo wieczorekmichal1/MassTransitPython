@@ -19,7 +19,7 @@ class RabbitMQSender(object):
                                                                    credentials=self._configuration.credentials))
         self._channel = self._connection.channel()
         self._queue = self._configuration.queue
-        self._channel.queue_declare(queue=self._queue)
+        self._channel.queue_declare(queue=self._queue, self._configuration.durable)
         self._routing_key = ''
         self._exchange = ''
 
